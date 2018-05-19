@@ -6,6 +6,8 @@ import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.PumpStreamHandler;
 import org.apache.commons.validator.routines.InetAddressValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
@@ -17,10 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CmdController {
+	private static final Logger logger = LoggerFactory.getLogger(CmdController.class);
 
 	@Autowired
-    private CacheManager cacheManager;
-	
+	private CacheManager cacheManager;
+
 	@ResponseBody
 	@RequestMapping(value = "/whois")
 	public String whois(@RequestParam(name = "ip", required = true) String ip, Model model) throws Exception {
@@ -29,8 +32,7 @@ public class CmdController {
 		if (!InetAddressValidator.getInstance().isValid(ip)) {
 			return "";
 		}
-		
-		System.out.println(line);
+		logger.info(line);
 		return execToString(line);
 	}
 
