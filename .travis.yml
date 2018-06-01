@@ -4,7 +4,10 @@ sudo: true
 before_install:
   - sudo apt-get -qq update
   - sudo sudo apt -y install tor torsocks
-  
+
+jdk:
+  - oraclejdk8 
+
 cache:
   directories:
   - $HOME/.m2
