@@ -4,6 +4,7 @@ sudo: true
 before_install:
   - sudo apt-get -qq update
   - sudo sudo apt -y install tor torsocks
+  - torify whois 192.168.2.1
 
 jdk:
   - oraclejdk8 
@@ -11,3 +12,5 @@ jdk:
 cache:
   directories:
   - $HOME/.m2
+  
+  
