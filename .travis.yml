@@ -1,8 +1,10 @@
 language: java
-sudo: false
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
-      - tor
-      - torsocks
+sudo: true
+     
+before_install:
+  - sudo apt-get -qq update
+  - sudo sudo apt -y install tor torsocks
+  
+cache:
+  directories:
+  - $HOME/.m2
