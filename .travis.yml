@@ -3,7 +3,11 @@ sudo: true
      
 before_install:
   - sudo apt-get -qq update
-  - sudo sudo apt -y install tor torsocks
+  - sudo sudo apt --allow install tor torsocks
+  - sudo sed -i 's/#ControlPort 9051/ControlPort 9051/g' /etc/tor/torrc
+  - sudo sed -i 's/#CookieAuthentication 0/CookieAuthentication 0/g' /etc/tor/torrc
+  - sudo /etc/init.d/tor restart
+  - torsocks curl 'https://api.ipify.org'
   - torify whois 192.168.2.1
 
 jdk:
@@ -12,5 +16,3 @@ jdk:
 cache:
   directories:
   - $HOME/.m2
-  
-  
