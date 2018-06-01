@@ -1,5 +1,5 @@
-# CommandRunner with spring-boot
 [![Build Status](https://travis-ci.org/ozkanpakdil/CommandRunner.svg?branch=master)](https://travis-ci.org/ozkanpakdil/CommandRunner)
+# CommandRunner with spring-boot
 to run the project in local
 mvn spring-boot:run
 
