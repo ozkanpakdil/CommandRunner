@@ -19,9 +19,8 @@ cache:
   
 addons:
   sonarcloud:
-    organization: "ozkanpakdil-github" # the key of the org you chose at step #3
+    organization: "ozkanpakdil-github"
     token:
       secure: "FCKmHLElIqm8+sfys5TllSJlcqCZlrC6/se+noTjYFdpkFdILnWjSnzi84xixps/sp3R3Dz5YyLDT8KTSOQ7ocCtA3v64k8ruMLx6Mqo4NOjIEOZjD7rgiQEB1Kzq30MtcIy552S5dG11IXRiDNCC46LcFzSO6DLDX/nFWwtyHbHxXdMh00ASxibRVLFYYqvqJBka3iK2PnQFEKk1u7WqoMZuFyYdaOuIZddT8eAq3OII9xr2lQp1g0wvavkh1QeIAmM8xaeieAbGAEmzH1a0vRLbRzW8+uxc34sAxvnsUJ/2Oxh7FvXFqUAYE1UohqQu6wqnI1F34yUAavMRufPx9bUjqJNc226h1aZgd21nH8/dspLBNnjfQIf8EV+KYpUmnuI+tUZ7qu+HpK/NL08WFdpziCiXnYnbTn0T6aju4mzKEmaoI0a1FyBGTOPfk1IQCKrZtoPP1LGxDOgivn6PE0Lgau9f8x/ODZ2IaqQAF6I+R/iPtxc2krgIKXL69W42QbMleEg4O+eqj6B9LaG3Vf5zdE+8ijILKIyAKTg3hD+KmTAB/b5rSAQW+xCbx+KDsqqCK+nmt/ErJzv05TAWdGN9WjVjrjodKn2kZmB2o1znd9nVSXmIDbfeAjsGWf1IKBCYBaR8K2CyseSXf8qYyy0SbZj1KaIjc1EoRsg8v0="
 script:
-  # other script steps might be done before running the actual analysis
-  - sonar-scanner
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
