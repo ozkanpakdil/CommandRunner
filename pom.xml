@@ -24,6 +24,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<sonar.login>e6ee7d59055a1f6859bb6ddea4a7c6623d969b78</sonar.login>
+		<sonar.organization>ozkanpakdil-github</sonar.organization>
 	</properties>
 
 	<dependencies>
