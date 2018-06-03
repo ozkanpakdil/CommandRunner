@@ -25,7 +25,7 @@ public class CmdController {
 	@ResponseBody
 	@RequestMapping(value = "/whois")
 	public String whois(@RequestParam(name = "ip", required = true) String ip) throws Exception {
-		String line = "torify whois " + ip;
+		String line = "torify whois " + ip + " 2>/dev/null";
 
 		if (!InetAddressValidator.getInstance().isValid(ip)) {
 			return "";

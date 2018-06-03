@@ -1,0 +1,12 @@
+<hazelcast
+	xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.10.xsd"
+	xmlns="http://www.hazelcast.com/schema/config"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<hot-restart-persistence enabled="true">
+		<base-dir>./cache</base-dir>
+		<parallelism>1</parallelism>
+		<validation-timeout-seconds>120</validation-timeout-seconds>
+		<data-load-timeout-seconds>900</data-load-timeout-seconds>
+		<cluster-data-recovery-policy>FULL_RECOVERY_ONLY</cluster-data-recovery-policy>
+	</hot-restart-persistence>
+</hazelcast>
