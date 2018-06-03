@@ -1,4 +1,4 @@
-package com.mascix.proxycmd.whois;
+package com.mascix.proxycmd.whois.tests;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cache.CacheManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.mascix.proxycmd.whois.CmdController;
 import com.mascix.proxycmd.whois.service.CmdService;
 
 @RunWith(SpringRunner.class)
@@ -22,23 +23,19 @@ public class WhoisApplicationTests {
 
 	@Autowired
 	CmdService cmdService;
-	
+
 	@Autowired
 	CacheManager chm;
 
 	@Test
 	public void contextLoads() throws Exception {
 		assertThat(cmdController).isNotNull();
-		String ip = "192.168.2.1";
-		cmdController.whois(ip);
-		// checking if cache works. check logs for only one "cache torify whois 192.168.2.1"
-		cmdController.whois(ip);
 
 		for (String cacheName : chm.getCacheNames()) {
 			logger.info(cacheName);
 			// investigate later HazelcastInstance ins = (HazelcastInstance) chm.getCache(cacheName).getNativeCache();
 		}
-		
+
 		cmdService.printCacheStats();
 
 	}
