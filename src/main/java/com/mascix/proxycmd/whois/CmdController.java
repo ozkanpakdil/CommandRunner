@@ -25,13 +25,13 @@ public class CmdController {
 	@ResponseBody
 	@RequestMapping(value = "/whois")
 	public String whois(@RequestParam(name = "ip", required = true) String ip) throws Exception {
-		String line = "torify whois " + ip + " 2>/dev/null";
+		String line = "torify whois " + ip;
 
 		if (!InetAddressValidator.getInstance().isValid(ip)) {
 			return "";
 		}
 		logger.info(line);
-		return cmd.execToString(line);
+		return cmd.execToString(ip);
 	}
 
 }

@@ -1,10 +1,6 @@
 package com.mascix.proxycmd.whois.service;
 
-import java.io.ByteArrayOutputStream;
-
-import org.apache.commons.exec.CommandLine;
-import org.apache.commons.exec.DefaultExecutor;
-import org.apache.commons.exec.PumpStreamHandler;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -19,14 +15,14 @@ public class CmdServiceImpl implements CmdService {
 	private static final Logger logger = LoggerFactory.getLogger(CmdServiceImpl.class);
 
 	@Override
-	public String execToString(String command) throws Exception {
-		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		CommandLine commandline = CommandLine.parse(command);
-		DefaultExecutor exec = new DefaultExecutor();
-		PumpStreamHandler streamHandler = new PumpStreamHandler(outputStream);
-		exec.setStreamHandler(streamHandler);
-		exec.execute(commandline);
-		return (outputStream.toString());
+	public String execToString(String ip) throws Exception {
+		String[] cmd = { "/bin/sh", "-c", "torify whois " + ip };
+
+		ProcessBuilder pb = new ProcessBuilder(cmd);
+		Process p = pb.start();
+		p.waitFor();
+
+		return IOUtils.toString(p.getInputStream(), "UTF-8");
 	}
 
 	@Override
