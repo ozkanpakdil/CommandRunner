@@ -10,12 +10,12 @@
 	<packaging>jar</packaging>
 
 	<name>whois</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Not so generic command runner/executor for java in any linux server.</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.2.RELEASE</version>
+		<version>2.0.5.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
