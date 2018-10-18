@@ -14,13 +14,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class CmdControllerTest {
 	@Autowired
-	CmdController cmdController;
+	private CmdController cmdController;
 
 	@Test
-	public void test() throws Exception {
+	public void whois() throws Exception {
 		assertThat(cmdController).isNotNull();
 		String ip = "192.168.2.1";
 		assertThat(cmdController.whois(ip)).isNotNull();
 	}
-
 }

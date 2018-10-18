@@ -14,12 +14,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class CmdServiceImplTest {
 
-	@Autowired
-	CmdService cmdService;
+    @Autowired
+    private CmdService cmdService;
 
-	@Test
-	public void test() throws Exception {
-		assertThat(cmdService.execToString("192.168.1.1")).isNotNull();
-	}
+    @Test
+    public void execToString() throws Exception {
+        assertThat(cmdService.execToString("192.168.1.1")).isNotNull();
+    }
 
+    @Test
+    public void printCacheStats() {
+        cmdService.printCacheStats();
+    }
 }

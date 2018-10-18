@@ -19,25 +19,31 @@ import com.mascix.proxycmd.whois.service.CmdService;
 public class WhoisApplicationTests {
 	private static final Logger logger = LoggerFactory.getLogger(WhoisApplicationTests.class);
 	@Autowired
-	CmdController cmdController;
+	private CmdController cmdController;
 
 	@Autowired
-	CmdService cmdService;
+	private CmdService cmdService;
 
 	@Autowired
-	CacheManager chm;
+	private CacheManager chm;
 
-	@Test
-	public void contextLoads() throws Exception {
+    @Test
+    public void main() {
 		assertThat(cmdController).isNotNull();
 
 		for (String cacheName : chm.getCacheNames()) {
 			logger.info(cacheName);
 			// investigate later HazelcastInstance ins = (HazelcastInstance) chm.getCache(cacheName).getNativeCache();
 		}
-
-		cmdService.printCacheStats();
-
 	}
 
+    @Test
+    public void cacheManager() {
+    	assertThat(chm).isNotNull();
+    }
+
+    @Test
+    public void hazelcastInstance() {
+		assertThat(chm).isNotNull();
+    }
 }
