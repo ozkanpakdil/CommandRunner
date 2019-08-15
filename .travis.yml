@@ -3,7 +3,7 @@ sudo: true
 
 before_install:
   - sudo apt-get -qq update
-  - sudo sudo apt install tor torsocks whois oracle-java8-installer
+  - sudo sudo apt install tor torsocks whois 
   - sudo sed -i 's/#ControlPort 9051/ControlPort 9051/g' /etc/tor/torrc
   - sudo sed -i 's/#CookieAuthentication 0/CookieAuthentication 0/g' /etc/tor/torrc
   - sudo /etc/init.d/tor restart
