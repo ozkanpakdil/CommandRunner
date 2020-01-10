@@ -1,6 +1,5 @@
 package com.mascix.proxycmd.whois;
 
-import org.apache.commons.validator.routines.InetAddressValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.common.net.InetAddresses;
 import com.mascix.proxycmd.whois.service.CmdService;
 
 @CacheConfig(cacheNames = "whois")
@@ -27,7 +27,7 @@ public class CmdController {
 	public String whois(@RequestParam(name = "ip", required = true) String ip) throws Exception {
 		String line = "torify whois " + ip;
 
-		if (!InetAddressValidator.getInstance().isValid(ip)) {
+		if (!InetAddresses.isInetAddress(ip)) {
 			return "";
 		}
 		logger.info(line);
