@@ -5,5 +5,4 @@ public interface CmdService {
 	String execToString(String line) throws Exception;
 
 	void printCacheStats();
-
 }

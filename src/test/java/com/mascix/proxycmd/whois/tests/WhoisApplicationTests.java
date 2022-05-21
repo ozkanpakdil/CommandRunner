@@ -1,49 +1,45 @@
 package com.mascix.proxycmd.whois.tests;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.mascix.proxycmd.whois.CmdController;
+import com.mascix.proxycmd.whois.service.CmdService;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cache.CacheManager;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import com.mascix.proxycmd.whois.CmdController;
-import com.mascix.proxycmd.whois.service.CmdService;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class WhoisApplicationTests {
-	private static final Logger logger = LoggerFactory.getLogger(WhoisApplicationTests.class);
-	@Autowired
-	private CmdController cmdController;
+    private static final Logger logger = LoggerFactory.getLogger(WhoisApplicationTests.class);
+    @Autowired
+    private CmdController cmdController;
 
-	@Autowired
-	private CmdService cmdService;
+    @Autowired
+    private CmdService cmdService;
 
-	@Autowired
-	private CacheManager chm;
+    @Autowired
+    private CacheManager chm;
 
     @Test
     public void main() {
-		assertThat(cmdController).isNotNull();
+        assertThat(cmdController).isNotNull();
 
-		for (String cacheName : chm.getCacheNames()) {
-			logger.info(cacheName);
-			// investigate later HazelcastInstance ins = (HazelcastInstance) chm.getCache(cacheName).getNativeCache();
-		}
-	}
+        for (String cacheName : chm.getCacheNames()) {
+            logger.info(cacheName);
+            // investigate later HazelcastInstance ins = (HazelcastInstance) chm.getCache(cacheName).getNativeCache();
+        }
+    }
 
     @Test
     public void cacheManager() {
-    	assertThat(chm).isNotNull();
+        assertThat(chm).isNotNull();
     }
 
     @Test
     public void hazelcastInstance() {
-		assertThat(chm).isNotNull();
+        assertThat(chm).isNotNull();
     }
 }

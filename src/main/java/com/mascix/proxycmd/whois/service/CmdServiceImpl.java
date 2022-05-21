@@ -1,14 +1,13 @@
 package com.mascix.proxycmd.whois.service;
 
+import com.hazelcast.core.Hazelcast;
+import com.hazelcast.core.HazelcastInstance;
+import com.hazelcast.map.IMap;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
-import com.hazelcast.core.Hazelcast;
-import com.hazelcast.core.HazelcastInstance;
-import com.hazelcast.core.IMap;
 
 import java.util.concurrent.TimeUnit;
 
@@ -36,7 +35,7 @@ public class CmdServiceImpl implements CmdService {
         for (HazelcastInstance ins : Hazelcast.getAllHazelcastInstances()) {
             logger.info(ins.getName());
             IMap<Object, Object> map = ins.getMap("whois");
-            logger.info(map.getLocalMapStats().toJson().toString());
+            logger.info(map.getLocalMapStats().getIndexStats().toString());
         }
     }
 }
